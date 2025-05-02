@@ -137,7 +137,7 @@ class _ImageAnswerViewState extends State<ImageAnswerView> {
                     }
                   },
                 ),
-                Padding(padding: EdgeInsets.all(8.0)),
+                Padding(padding: EdgeInsets.all(20.0)),
                 _imageAnswerFormat.useGallery
                     ? GestureDetector(
                         child: Text('Select from Gallery'),
@@ -166,6 +166,7 @@ class _ImageAnswerViewState extends State<ImageAnswerView> {
     picture?.readAsBytes().then((value) {
       setState(() {
         filePath = picture.path;
+        _isValid = filePath.contains('/');
       });
     });
   }
@@ -180,6 +181,7 @@ class _ImageAnswerViewState extends State<ImageAnswerView> {
     picture?.readAsBytes().then((value) {
       setState(() {
         filePath = picture.path;
+        _isValid = filePath.contains('/');
       });
     });
   }

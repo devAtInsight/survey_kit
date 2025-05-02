@@ -2,6 +2,7 @@ import 'package:survey_kit/src/result/question/agreement_question_result.dart';
 import 'package:survey_kit/src/result/question/boolean_question_result.dart';
 import 'package:survey_kit/src/result/question/date_question_result.dart';
 import 'package:survey_kit/src/result/question/double_question_result.dart';
+import 'package:survey_kit/src/result/question/image_question_result.dart';
 import 'package:survey_kit/src/result/question/integer_question_result.dart';
 import 'package:survey_kit/src/result/question/multiple_choice_question_result.dart';
 import 'package:survey_kit/src/result/question/multiple_double_question_result.dart';
@@ -106,6 +107,10 @@ class _Converter implements JsonConverter<List<QuestionResult>, Object> {
         final qrJson = qr.toJson();
         qrJson['type'] = (AgreementQuestionResult).toString();
         allQuestionResultsEncoded.add(qrJson);
+      } else if (qr is ImageQuestionResult) {
+        final qrJson = qr.toJson();
+        qrJson['type'] = (ImageQuestionResult).toString();
+        allQuestionResultsEncoded.add(qrJson);
       } else if (qr is InstructionStepResult) {
         final qrJson = qr.toJson();
         qrJson['type'] = (InstructionStepResult).toString();
@@ -153,6 +158,8 @@ class _Converter implements JsonConverter<List<QuestionResult>, Object> {
         results.add(TextQuestionResult.fromJson(qData));
       } else if (qType == (TimeQuestionResult).toString()) {
         results.add(TimeQuestionResult.fromJson(qData));
+      } else if (qType == (ImageQuestionResult).toString()) {
+        results.add(ImageQuestionResult.fromJson(qData));
       } else if (qType == (InstructionStepResult).toString()) {
         results.add(InstructionStepResult.fromJson(qData));
       } else if (qType == (CompletionStepResult).toString()) {
