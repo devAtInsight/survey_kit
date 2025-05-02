@@ -39,7 +39,7 @@ class _ScaleAnswerViewState extends State<ScaleAnswerView> {
         id: widget.questionStep.stepIdentifier,
         startDate: _startDate,
         endDate: DateTime.now(),
-        valueIdentifier: _sliderValue.toString(),
+        valueIdentifier: _sliderValue.round().toString(),
         result: _sliderValue,
       ),
       title: widget.questionStep.title.isNotEmpty
@@ -70,7 +70,7 @@ class _ScaleAnswerViewState extends State<ScaleAnswerView> {
                   Padding(
                     padding: const EdgeInsets.all(14.0),
                     child: Text(
-                      _sliderValue.toInt().toString(),
+                      _sliderValue.round().toString(),
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ),
@@ -125,7 +125,7 @@ class _ScaleAnswerViewState extends State<ScaleAnswerView> {
                       divisions: (_scaleAnswerFormat.maximumValue -
                               _scaleAnswerFormat.minimumValue) ~/
                           _scaleAnswerFormat.step,
-                      label: _sliderValue.toString(),
+                      label: _sliderValue.round().toString(),
                     ),
                   ],
                 ),
